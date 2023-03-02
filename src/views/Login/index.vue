@@ -32,6 +32,7 @@
 
 <script>
 import { login } from '@/api/user'
+import { setToken } from '@/utils/token'
 export default {
   name: 'LoginIndex',
   data () {
@@ -59,6 +60,7 @@ export default {
         // })
         console.log('登录', res)
         this.$toast.success('登录成功')
+        setToken(res.data.token)
       } catch (error) {
         console.log('error', error)
         this.$toast.fail(error.response.data.message)

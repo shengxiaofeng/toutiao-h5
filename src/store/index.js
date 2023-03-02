@@ -5,18 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token: '',
-    refresh_token: ''
+    // token: '',
+    // refresh_token: ''
   },
   getters: {
   },
   mutations: {
-    setToken (state, token) {
-      state.token = token
-    },
-    setRefreshToken (state, refreshToken) {
-      state.refresh_token = refreshToken
-    }
+    // setToken (state, token) {
+    //   state.token = token
+    // },
+    // setRefreshToken (state, refreshToken) {
+    //   state.refresh_token = refreshToken
+    // }
   },
   actions: {
   },
