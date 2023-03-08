@@ -50,7 +50,7 @@ export default {
       console.log('submit', values)
       try {
         // 第一种
-        const { data: res } = await login(this.user)
+        const { data } = await login(this.user)
         // const res = await login({
         //   // 第二种
         //   // mobile: this.user.mobile,
@@ -58,9 +58,11 @@ export default {
         //   // 第三种
         //   // ...this.user
         // })
-        console.log('登录', res)
+        console.log('登录', data)
         this.$toast.success('登录成功')
-        setToken(res.data.token)
+        setToken(data.data.token)
+        // 存refresh_token
+        localStorage.setItem('refresh_token', data.data.refresh_token)
         // 跳转一定要写在最后，尽量最后执行
         this.$router.replace('/home')
       } catch (error) {

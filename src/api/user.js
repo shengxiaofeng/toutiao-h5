@@ -7,6 +7,22 @@ export const login = ({ mobile, code }) => {
     code
   })
 }
+// 刷新token
+export const getNewToken = () => request({
+  url: '/v1_0/authorizations',
+  method: 'PUT',
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('refresh_token')}`
+  }
+})
+// export const getNewToken = () => {
+//   return request.put('/v1_0/authorizations',
+//     // 请求拦截器统一携带的是token，而这次请求需要的是refresh_token
+//     {
+//       Authorization: `Bearer ${localStorage.getItem('refresh_token')}`
+
+//     })
+// }
 // export const login = data => {
 //   return request.post('/v1_0/authorizations', data)
 // }
