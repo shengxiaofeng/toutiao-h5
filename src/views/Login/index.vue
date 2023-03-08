@@ -61,6 +61,8 @@ export default {
         console.log('登录', res)
         this.$toast.success('登录成功')
         setToken(res.data.token)
+        // 跳转一定要写在最后，尽量最后执行
+        this.$router.replace('/home')
       } catch (error) {
         console.log('error', error)
         this.$toast.fail(error.response.data.message)

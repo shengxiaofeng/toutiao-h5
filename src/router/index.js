@@ -5,13 +5,46 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    redirect: '/login'
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login/')
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/Search/')
+  },
+  {
+    path: '/searchResult/:kw',
+    name: 'searchResult',
+    component: () => import('@/views/Search/SearchResult')
+  },
+  {
+    path: '/articleInfo',
+    name: 'articleInfo',
+    component: () => import('@/views/ArticleInfo')
+  },
+  {
+    path: '/userPro',
+    name: 'userPro',
+    component: () => import('@/views/EditUserPro/')
+  },
+  {
+    path: '/',
+    redirect: '/home', // 这里默认打开首页（layout下面的home)
+    component: () => import('@/views/Layout'),
+    children: [
+      {
+        path: 'home',
+        name: 'home',
+        component: () => import('@/views/Home/')
+      },
+      {
+        path: 'my',
+        name: 'my',
+        component: () => import('@/views/My/')
+      }
+    ]
   }
 ]
 

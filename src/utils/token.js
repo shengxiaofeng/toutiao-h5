@@ -6,10 +6,12 @@ const key = 'toutiao'
 export const setToken = (token) => {
   localStorage.setItem(key, token)
 }
-// 获取
-export const getToken = () => {
-  localStorage.getItem(key)
-}
+// 获取 ,写了大括号要写return
+// export const getToken = () => {
+//   localStorage.getItem(key)
+// }
+export const getToken = () => localStorage.getItem(key)
+
 // 移除
 export const removeToken = () => {
   localStorage.removeItem(key)
