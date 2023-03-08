@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Toast } from 'vant'
 import { getToken, removeToken, setToken } from './token'
 import { getNewToken } from '@/api/user'
+import router from '@/router'
 
 const baseURL = 'http://toutiao.itheima.net'
 const request = axios.create({
@@ -42,6 +43,11 @@ request.interceptors.response.use(function (response) {
     // 2.未完成的这次请求，再次发起
     // error.config就是上一次请求的配置对象
     return request(error.config)
+  } else if (error.response.status === 500 && error.config.url === '/v1_0/authorizations' && error.config.method === 'put') {
+    // 刷新的refresh_token也过期了
+    removeToken()
+    localStorage.clear()// 清除localStorage所有值
+    router.replace('/login')
   }
   return Promise.reject(error)
 })
