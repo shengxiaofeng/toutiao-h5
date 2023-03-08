@@ -16,3 +16,8 @@ export const getCommentList = ({ type, source, offset, limit }) => {
 export const commentLike = ({ commentId }) => {
   return request.post('/v1_0/comment/likings', { target: commentId })
 }
+
+// 发布评论
+export const pubComment = data => {
+  return request.post('/v1_0/comments', data)
+}

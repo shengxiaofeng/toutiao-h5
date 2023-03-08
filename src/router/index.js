@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { getToken } from '@/utils/token'
 
 Vue.use(VueRouter)
 
@@ -52,4 +53,13 @@ const router = new VueRouter({
   routes
 })
 
+// 全局前置守卫,路由在真正跳转之前执行此函数
+router.beforeEach((to, from, next) => {
+  // 如果已经登录了，不要切换到登录页面,?的作用，本地没有值就显示空
+  if (getToken()?.length > 0 && to.path === '/login') {
+    next(false)// 留在原地/什么都不写
+  } else {
+    next()// 其他情况放行
+  }
+})
 export default router

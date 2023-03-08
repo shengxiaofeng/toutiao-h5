@@ -1,7 +1,7 @@
 import router from '@/router'
 import axios from 'axios'
 import { Toast } from 'vant'
-import { getToken } from './token'
+import { getToken, removeToken } from './token'
 
 const baseURL = 'http://toutiao.itheima.net'
 const request = axios.create({
@@ -30,7 +30,8 @@ request.interceptors.response.use(function (response) {
   console.dir(error)// 错误对象
   if (error.response.status === 401) {
     Toast('身份已过期')
-    router.push('/login')
+    removeToken()// 先清除token，才能让路由守卫判断失效，放行去登录页
+    router.replace('/login')
   }
   return Promise.reject(error)
 })

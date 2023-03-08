@@ -76,11 +76,7 @@
         show-word-limit
         :border="false"
       ></van-field>
-      <van-share-sheet
-        v-model="showShare"
-        title="立即分享给好友"
-        :options="options"
-      />
+      <van-button type="default" class="pub-btn" @click="publishFn" :disabled="commText.length === 0 ">发布</van-button>
      </div>
      </van-popup>
   </div>
@@ -181,6 +177,7 @@ export default {
     },
     // 发布评论
     async publishFn () {
+      console.log('this.commText', this.commText)
       const { data } = await pubComment({
         target: this.$route.query.art_id,
         content: this.commText,
@@ -263,6 +260,7 @@ export default {
 }
 .van-field{
   background-color:#f5f7f9 ;
+  width: 300px;
 }
 .pub-btn{
   width: 75px;
