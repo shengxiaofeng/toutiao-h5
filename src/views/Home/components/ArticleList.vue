@@ -89,12 +89,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// .articleList{
-//   position: fixed;
-//   top:96px;
-//   bottom: 50px;
-//   left: 0;
-//   right: 0;
-//   overflow-y: auto;
-// }
+.articleList{
+  position: fixed;
+  top:97px;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+}
 </style>

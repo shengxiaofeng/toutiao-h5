@@ -24,9 +24,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.layout-container{
-  padding-bottom: 50px;
-}
 .van-tabbar{
   border-top: 1px solid #f8f8f8;
 }

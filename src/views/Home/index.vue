@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <!-- 头部 -->
-    <van-nav-bar fixed>
+    <van-nav-bar>
       <template #left >
         <img src="" alt="">
         网络头条
@@ -13,7 +13,7 @@
     </van-nav-bar>
     <!-- tab标签 -->
     <!-- 加了name，这里面的v-model就和name一样，是channelId -->
-    <van-tabs v-model="active" animated sticky offset-top="1.23rem" >
+    <van-tabs v-model="active" sticky offset-top="1.23rem" >
       <van-tab
       :title="userChannel.name"
       v-for="userChannel in userChannels"
@@ -138,7 +138,7 @@ export default {
 
 <style lang="less" scoped>
 .home-container{
-  padding-top: 46px;
+  // padding-top: 46px;
   .van-icon-search{
     color: #fff;
     font-size: 18px;
