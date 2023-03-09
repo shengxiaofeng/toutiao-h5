@@ -64,7 +64,7 @@ export default {
         // 存refresh_token
         localStorage.setItem('refresh_token', data.data.refresh_token)
         // 跳转一定要写在最后，尽量最后执行
-        this.$router.replace('/home')
+        this.$router.replace({ path: this.$route.query.path || '/home' })
       } catch (error) {
         console.log('error', error)
         this.$toast.fail(error.response.data.message)

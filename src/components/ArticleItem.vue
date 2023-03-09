@@ -5,8 +5,17 @@
 
         <template #label>
           <div  v-if="artitem.cover.type === 3">
-            <van-image v-for="(img,i) in artitem.cover.images" :key="i"
-              :src="img"></van-image>
+            <!-- <img
+            v-for="(img,i) in artitem.cover.images"
+            :key="i"
+            v-lazy="img"
+            /> -->
+            <van-image
+            v-for="(img,i) in artitem.cover.images"
+            :key="i"
+            :src="img"
+            lazy-load
+            ></van-image>
           </div>
           <div>
             <span>{{artitem.aut_name}}</span>
@@ -19,7 +28,12 @@
         <template #extra v-if="artitem.cover.type === 1" >
           <van-image class="img1"
             :src="artitem.cover.images[0]"
+            lazy-load
           />
+          <!-- <img class="img1"
+            v-lazy="artitem.cover.images[0]"
+
+          /> -->
         </template>
 
       </van-cell>

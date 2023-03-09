@@ -57,7 +57,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // 如果已经登录了，不要切换到登录页面,?的作用，本地没有值就显示空
   if (getToken()?.length > 0 && to.path === '/login') {
-    next(false)// 留在原地/什么都不写
+    next('/home')// 留在原地/什么都不写
   } else {
     next()// 其他情况放行
   }

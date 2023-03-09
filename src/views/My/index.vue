@@ -45,9 +45,13 @@ export default {
       user: {}
     }
   },
-  created () {
+  // 当加了kppe-alive，加载用户信息要放在activated中，被激活后调用，不然更改头像不会自动刷新
+  activated () {
     this.loadUserProfile()
   },
+  // created () {
+  //   this.loadUserProfile()
+  // },
   methods: {
     async loadUserProfile () {
       const { data } = await getUser()

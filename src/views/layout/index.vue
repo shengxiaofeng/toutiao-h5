@@ -1,6 +1,8 @@
 <template>
   <div class="layout-container">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
 
     <van-tabbar v-model="active" route>
       <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>

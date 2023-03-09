@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import './github-markdown.css'
 import { getArticleInfo, deleteArticleLove, articleLove } from '@/api/article'
 import { timeAgo } from '@/utils/day.js'
 import { deleteUserFollow, userFollow } from '@/api/user'
