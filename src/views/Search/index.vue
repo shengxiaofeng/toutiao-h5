@@ -37,6 +37,7 @@
 
 <script>
 import { getSuggestion } from '@/api/search'
+import { getStorage, setStorage } from '@/utils/storage'
 
 export default {
   name: 'SearchIndex',
@@ -45,7 +46,7 @@ export default {
       kw: '',
       timer: null, // 防抖的定时器
       suggestList: [], // 联想建议
-      history: JSON.parse(localStorage.getItem('his')) || []// 搜索历史
+      history: JSON.parse(getStorage('his')) || []// 搜索历史
     }
   },
   methods: {
@@ -133,7 +134,7 @@ export default {
         // set类型对象 ->转回 -> Array数组类型
         const arr = Array.from(theSet)
         // 立刻覆盖式的保存到本地
-        localStorage.setItem('his', JSON.stringify(arr))
+        setStorage('his', JSON.stringify(arr))
       }
 
     }

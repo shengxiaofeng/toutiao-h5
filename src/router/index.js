@@ -39,6 +39,9 @@ const routes = [
         path: 'home',
         name: 'home',
         component: () => import('@/views/Home/')
+        // meta: {
+        //   scrollT: 0// 保存首页离开时，滚动条的位置
+        // }没用上
       },
       {
         path: 'my',

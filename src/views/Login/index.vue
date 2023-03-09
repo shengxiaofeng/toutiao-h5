@@ -33,6 +33,7 @@
 <script>
 import { login } from '@/api/user'
 import { setToken } from '@/utils/token'
+import { setStorage } from '@/utils/storage'
 export default {
   name: 'LoginIndex',
   data () {
@@ -62,7 +63,7 @@ export default {
         this.$toast.success('登录成功')
         setToken(data.data.token)
         // 存refresh_token
-        localStorage.setItem('refresh_token', data.data.refresh_token)
+        setStorage('refresh_token', data.data.refresh_token)
         // 跳转一定要写在最后，尽量最后执行
         this.$router.replace({ path: this.$route.query.path || '/home' })
       } catch (error) {

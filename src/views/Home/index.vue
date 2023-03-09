@@ -13,7 +13,9 @@
     </van-nav-bar>
     <!-- tab标签 -->
     <!-- 加了name，这里面的v-model就和name一样，是channelId -->
-    <van-tabs v-model="active" sticky offset-top="1.23rem" >
+    <!-- animated加这个属性就没法用 position: fixed-->
+    <!-- <van-tabs v-model="active" sticky offset-top="1.23rem" animated> -->
+    <van-tabs v-model="active"  >
       <van-tab
       :title="userChannel.name"
       v-for="userChannel in userChannels"
@@ -129,6 +131,7 @@ export default {
       })
     }
   },
+
   components: {
     ArticleList,
     ChannelEdit
@@ -159,7 +162,7 @@ export default {
     position: fixed;
     right: 0;
     width: 40px;
-    height: 43px;
+    height: 44px;
     display: flex;
     justify-content: center;
     align-items: center;

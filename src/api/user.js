@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-
+import { getStorage } from '@/utils/storage'
 // 登录
 export const login = ({ mobile, code }) => {
   return request.post('/v1_0/authorizations', {
@@ -12,7 +12,7 @@ export const getNewToken = () => request({
   url: '/v1_0/authorizations',
   method: 'PUT',
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('refresh_token')}`
+    Authorization: `Bearer ${getStorage('refresh_token')}`
   }
 })
 // export const getNewToken = () => {

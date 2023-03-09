@@ -1,6 +1,7 @@
 // import router from '@/router'
 import axios from 'axios'
-import { Toast } from 'vant'
+// import { Toast } from 'vant'//封装了不能直接引入vant里面的了
+import Toast from '@/ui/toast'
 // import { getToken, removeToken, setToken } from './token'
 import { getToken, removeToken } from './token'
 // import { getNewToken } from '@/api/user'

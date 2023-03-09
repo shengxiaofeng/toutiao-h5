@@ -8,6 +8,7 @@ const path = require('path')
 const themePath = path.join(__dirname, './src/styles/cover.less')
 // vue.config.js
 module.exports = {
+  publicPath: './',
   css: {
     loaderOptions: {
       less: {

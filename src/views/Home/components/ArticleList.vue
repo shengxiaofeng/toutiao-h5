@@ -1,5 +1,5 @@
 <template>
-  <div class="articleList">
+  <div class="articleList" ref="artRef">
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
     <van-list
       v-model="loading"
@@ -23,7 +23,7 @@
 <script>
 import ArticleItem from '@/components/ArticleItem.vue'
 import { getAllArticles } from '@/api/article'
-
+import { debounce } from 'lodash'
 export default {
   name: 'ArticleList',
   data () {
@@ -32,7 +32,8 @@ export default {
       loading: false, // 底部加载状态
       finished: false, // 底部完成状态
       theTime: new Date().getTime(), // 用于分页,当前时间戳
-      isLoading: false
+      isLoading: false,
+      scrollTop: 0// 列表滚动到顶部的距离
     }
   },
   props: {
@@ -82,6 +83,16 @@ export default {
       })
     }
   },
+  mounted () {
+    this.$refs.artRef.onscroll = debounce(() => {
+      console.log(this.$refs.artRef.scrollTop)
+      this.scrollTop = this.$refs.artRef.scrollTop
+    }, 50)
+  },
+  activated () {
+    // 组件被激活时再把得到的距离给他
+    this.$refs.artRef.scrollTop = this.scrollTop
+  },
   components: {
     ArticleItem
   }
@@ -91,7 +102,7 @@ export default {
 <style lang="less" scoped>
 .articleList{
   position: fixed;
-  top:97px;
+  top:91px;
   bottom: 50px;
   left: 0;
   right: 0;
